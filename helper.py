@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime , date
+import streamlit as st
 
 
 def read():
@@ -40,26 +41,34 @@ def record_care(name, activity,care_date):
 
 
 
-
 # 3 : View Due Plants
 def get_due_plants():
-
     plants = read()
-    history = pd.read_csv("care_history.csv")
 
-    last = history[history["activity"] == "Watering"] \
-    .groupby("name")["date"].max()
-    
-    df = plants.merge(last, on="name", how="left")
+    try:
+        history = pd.read_csv("care_history.csv")
+    except FileNotFoundError:
+        history = pd.DataFrame(columns=["name", "activity", "date"])
 
-    df["last_date"] = pd.to_datetime(df["date_y"])
+    watering_history = history[history["activity"] == "Watering"]
 
-    df["days"] = (pd.Timestamp.today() - df["last_date"]).dt.days
+    if not watering_history.empty:
+        last = watering_history.groupby("name")["date"].max().reset_index()
+        last.columns = ["name", "last_watered_date"]
+        df = plants.merge(last, on="name", how="left")
+    else:
+        df = plants.copy()
+        df["last_watered_date"] = pd.NaT
+
+    df["last_date"] = pd.to_datetime(df["last_watered_date"].fillna(df["date"]))
+    df["days"] = (pd.to_datetime(pd.Timestamp.today().date()) - pd.to_datetime(df["last_date"].dt.date)).dt.days
+    df["water"] = pd.to_numeric(df["water"], errors='coerce').fillna(1)
+    st.write("Debug Data Table:", df[["name", "last_date", "days", "water"]])
+
 
     due = df[df["days"] >= df["water"]]
 
     return due
-
 
 
 # 4 : search_plants 
@@ -84,6 +93,7 @@ def add_growth(name, height, growth_date):
     df = pd.read_csv("growth.csv")
     df = pd.concat([df, new], ignore_index=True)
     df.to_csv("growth.csv", index=False)
+
 
 
 # 7: Seasonal Reminder 
