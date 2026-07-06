@@ -112,7 +112,12 @@ if c=="📋 View All Plants":
         
         plant = st.selectbox("Choose plant", df["name"])
         photo = df.loc[df["name"] == plant, "photo"].iloc[0]
-        st.image(photo)
+        
+    if pd.isna(photo) or photo == "":
+            st.info("No image available for this plant.")
+    else:
+            st.image(photo)
+    
 
 
 # 6 : Track growth    
