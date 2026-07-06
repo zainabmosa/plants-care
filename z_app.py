@@ -18,7 +18,7 @@ c = st.sidebar.radio('Choose options❣️',[
     "🪴 Care History",
     "🕧 View Due Plants",
     "🔍 Search Plants",
-    "📋 View All Plants",
+    "🌿 View All Plants",
     "🎋 Track Growth",
     "🌿 Growth History",
     "🍁 Seasonal Reminder",
@@ -126,7 +126,7 @@ if c=="🔍 Search Plants":
 
 
 # 5 : View All Plants
-if c=="📋 View All Plants": 
+if c=="🌿 View All Plants": 
     
     df = read()
     st.subheader("🌿 All Plants")
