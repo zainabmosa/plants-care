@@ -51,7 +51,7 @@ def get_due_plants():
     
     df = plants.merge(last, on="name", how="left")
 
-    df["last_date"] = pd.to_datetime(df["date_y"])
+    df["last_date"] = pd.to_datetime(df["last"])
 
     df["days"] = (pd.Timestamp.today() - df["last_date"]).dt.days
 
