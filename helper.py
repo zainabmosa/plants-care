@@ -73,13 +73,16 @@ def search_plants(t):
 
 
 # 6 : add growth
-def add_growth(name, height):
-    new = pd.DataFrame([{"name"  : name, "height": height, "date" : date.today() }])
- 
+def add_growth(name, height, growth_date):
+    new = pd.DataFrame([{
+        "name": name,
+        "height": height,
+        "date": growth_date
+    }])
+
     df = pd.read_csv("growth.csv")
     df = pd.concat([df, new], ignore_index=True)
     df.to_csv("growth.csv", index=False)
-
 
 
 # 7: Seasonal Reminder 
