@@ -19,6 +19,7 @@ c = st.sidebar.radio('Choose options❣️',[
     "🔍 Search Plants",
     "📋 View All Plants",
     "🎋 Track Growth",
+    "🌿 Growth History",
     "🍁 Seasonal Reminder",
     "💉 Diagnose Plant",
     "🔨 Adjust Care Schedule"])
@@ -151,12 +152,18 @@ if c=="🎋 Track Growth":
     
     plant = st.selectbox("Choose plant", df["name"])
     height = st.number_input("Plant height (cm)", min_value=0.0)
+    growth_date = st.date_input("Date")
     
     if st.button("Save Growth"):
-        add_growth(plant, height)
+        add_growth(plant, height, growth_date)
         st.success("Growth saved!")
+        
+if c=="🌿 Growth History":
+    
+    st.subheader("🌿 Growth History")
 
-
+    growth_df = pd.read_csv("growth.csv")
+    st.dataframe(growth_df)
 
 
 # 7: Seasonal Reminder   
