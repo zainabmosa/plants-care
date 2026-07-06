@@ -4,6 +4,14 @@ from helper import *
 
 st.sidebar.title("🌿Plant Care Tracker")
 
+st.markdown("""
+<style>
+section[data-testid="stSidebar"] h1 {
+    font-size: 26px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 c = st.sidebar.radio('Choose options❣️',[
     "🌱 Add Plant",
     "🍃 Record Care",
@@ -14,6 +22,20 @@ c = st.sidebar.radio('Choose options❣️',[
     "🍁 Seasonal Reminder",
     "💉 Diagnose Plant",
     "🔨 Adjust Care Schedule"])
+
+
+st.markdown("""
+<style>
+section[data-testid="stSidebar"] label {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+section[data-testid="stSidebar"] p {
+    font-size: 20px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 
 # 1 : add plant
@@ -72,7 +94,7 @@ if c=="🕧 View Due Plants":
     st.subheader("🕧 View Due Plants")
     
     due = get_due_plants()
-    
+
     if due.empty:
         st.success("All plants watered today 🌱")
     else:
