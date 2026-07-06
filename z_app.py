@@ -15,6 +15,7 @@ section[data-testid="stSidebar"] h1 {
 c = st.sidebar.radio('Choose options❣️',[
     "🌱 Add Plant",
     "🍃 Record Care",
+    "🪴 Care History",
     "🕧 View Due Plants",
     "🔍 Search Plants",
     "📋 View All Plants",
@@ -82,12 +83,17 @@ if c=="🍃 Record Care":
     
     plant = st.selectbox("Choose a plant", df["name"])
     activity = st.selectbox("Choose activity",["Watering", "Fertilizing", "Repotting", "Pruning"])
-    care_date=st.date_input("Date")
+    care_date=st.st.date_input("Date")
     
     if st.button("Save Care"):
         record_care(plant, activity,care_date)
-        st.success("Care activity saved!")  
+        st.success("Care activity saved!")    
 
+if c=="🪴 Care History":
+    
+    st.subheader("🪴 Care History")
+
+    st.dataframe(pd.read_csv("care_history.csv"))
 
 
 # 3 : View Due Plants
