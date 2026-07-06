@@ -27,16 +27,17 @@ def add_plant_data(name, location, date, water, sunlight, photo ): # 1
 
 
 # 2 : record care
-def record_care(name, activity):
+def record_care(name, activity,care_date):
     
     new = pd.DataFrame([{
         "name": name,
         "activity": activity,
-        "date": date.today()}])
+        "date": care_date}])
 
     df = pd.read_csv("care_history.csv")
     df = pd.concat([df, new], ignore_index=True)
     df.to_csv("care_history.csv", index=False)
+
 
 
 
