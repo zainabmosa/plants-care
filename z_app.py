@@ -82,10 +82,11 @@ if c=="🍃 Record Care":
     
     plant = st.selectbox("Choose a plant", df["name"])
     activity = st.selectbox("Choose activity",["Watering", "Fertilizing", "Repotting", "Pruning"])
+    care_date=st.st.date_input("Date")
     
     if st.button("Save Care"):
-        record_care(plant, activity)
-        st.success("Care activity saved!")    
+        record_care(plant, activity,care_date)
+        st.success("Care activity saved!")  
 
 
 
