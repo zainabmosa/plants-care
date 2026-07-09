@@ -1,6 +1,6 @@
 import streamlit as st
 from helper import *
-
+import pandas as pd
 
 st.sidebar.title("🌿Plant Care Tracker")
 
@@ -18,7 +18,7 @@ c = st.sidebar.radio('Choose options❣️',[
     "🪴 Care History",
     "🕧 View Due Plants",
     "🔍 Search Plants",
-    "🌿 View All Plants",
+    "📋 View All Plants",
     "🎋 Track Growth",
     "🌿 Growth History",
     "🍁 Seasonal Reminder",
@@ -80,10 +80,10 @@ if c=="🍃 Record Care":
     st.title("🍃 Record Care")
     
     df = read()
-    
+    today= pd.Timestamp.today().normalize()
     plant = st.selectbox("Choose a plant", df["name"])
     activity = st.selectbox("Choose activity",["Watering", "Fertilizing", "Repotting", "Pruning"])
-    care_date=st.date_input("Date")
+    care_date=st.date_input("Date",max_value=today)
     
     if st.button("Save Care"):
         record_care(plant, activity,care_date)
@@ -126,7 +126,7 @@ if c=="🔍 Search Plants":
 
 
 # 5 : View All Plants
-if c=="🌿 View All Plants": 
+if c=="📋 View All Plants": 
     
     df = read()
     st.subheader("🌿 All Plants")
@@ -156,10 +156,10 @@ if c=="🎋 Track Growth":
     st.subheader("🎋 Track Growth")
     
     df = read()
-    
+    today= pd.Timestamp.today().normalize()
     plant = st.selectbox("Choose plant", df["name"])
     height = st.number_input("Plant height (cm)", min_value=0.0)
-    growth_date = st.date_input("Date")
+    growth_date = st.date_input("Date",max_value=today)
     
     if st.button("Save Growth"):
         add_growth(plant, height, growth_date)
