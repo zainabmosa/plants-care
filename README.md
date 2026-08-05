@@ -1,5 +1,5 @@
 # plants-care
-For people who is growing a lot of plants in the home, this app will make life easy for track almost every thing about the plants . It  missing a lot of thing but it can be edit.
+Plant Care Tracker is an all-in-one application that helps home gardeners manage their plants with ease. From watering schedules and growth tracking to care history and reminders, everything is organized in one convenient place.
 
 # The link below is the app.
 https://zainab.streamlit.app/
