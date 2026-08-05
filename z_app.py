@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from helper_updated import *
+from helper import *
 
 
 st.set_page_config(page_title="Plant Care Tracker", page_icon="🌿", layout="wide")
