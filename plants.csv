@@ -1,2 +1,2 @@
-name,location,date,water,sunlight,last_watered,photo
-Aloe Vera,Kitchen,2026-07-05,7,High,2026-07-05,AloeVera.jpeg
+Name,location,Acquired Date,Water,Fertilizing,Repotting,Pruning,Sunlight,Last_Watered,Photo,Location
+Snake Plant,,2026-07-15,2,14,365,30,High,,,Living Room
