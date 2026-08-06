@@ -124,9 +124,9 @@ if c == "🌱 Add Plant":
         location = st.text_input("Location in home")
         date = st.date_input("Date acquired", max_value = today)
         water = st.number_input("Watering frequency in days", min_value=1)
-        Fertilizing = st.number_input("Fertilizing frequency in days", min_value=14)
-        Repotting = st.number_input("Repotting frequency in days", min_value=365)
-        Pruning = st.number_input("Pruning frequency in days", min_value=30)
+        Fertilizing = st.number_input("Fertilizing frequency in days", value=14)
+        Repotting = st.number_input("Repotting frequency in days", value=365)
+        Pruning = st.number_input("Pruning frequency in days", value=30)
         sunlight = st.selectbox("Sunlight needs", ["Low", "Medium", "High"])
 
         if st.button("Save Plant"):
