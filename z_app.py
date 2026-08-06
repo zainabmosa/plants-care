@@ -136,7 +136,7 @@ if c == "🌱 Add Plant":
 
             if clean_name == "":
                 st.error("⚠️ Plant name can't be empty.")
-            elif not df.empty and clean_name.lower() in df["name"].fillna("").str.lower().values:
+            elif not df.empty and clean_name.lower() in df["Name"].fillna("").str.lower().values:
                 st.error("⚠️ Plant already exists.")
             elif clean_location == "":
                 st.error("⚠️ Location can't be empty.")
